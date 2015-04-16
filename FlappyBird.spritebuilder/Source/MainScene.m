@@ -9,7 +9,22 @@
 #import "MainScene.h"
 #import "Obstacle.h"
 
+@interface CGPointObject : NSObject
+{
+    CGPoint_ratio;
+    CGPoint_offset;
+    CCNode *__unsafe_unretained _child;
+}
+@property (nonatomic,readwrite) CGPoint ratio;
+@property (nonatomic,readwrite) CGPoint offset;
+@property (nonatomic,readwrite,unsafe_unretained) CCNode *child;
++(id) pointWithCGPoint;(CGPoint)point offset:(CGPoint)offset;
+-(id) initWithCGPoint;(CGPoint)point offset:(CGPoint)offset;
+@end
+
+
 @implementation MainScene {
+
     CCNode *_ground1;
     CCNode *_ground2;
     NSArray *_grounds;
@@ -33,6 +48,7 @@
     CCLabelTTF *_nameLabel;
     
     int points;
+    
 }
 
 
