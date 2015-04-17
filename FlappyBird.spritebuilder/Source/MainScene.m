@@ -11,8 +11,8 @@
 
 @interface CGPointObject : NSObject
 {
-    CGPoint_ratio;
-    CGPoint_offset;
+    CGPoint _ratio;
+    CGPoint _offset;
     CCNode *__unsafe_unretained _child;
 }
 @property (nonatomic,readwrite) CGPoint ratio;
