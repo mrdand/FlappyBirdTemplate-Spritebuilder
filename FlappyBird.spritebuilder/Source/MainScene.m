@@ -197,7 +197,41 @@
         }
     }
     
+    _parallaxBackground.position = ccp(_parallaxBackground.position.x - (character.physicsBody.velocity.x * delta), _parallaxBackground.position.y);
     
+    for (CCNode *bush in _bushes)
+    {
+        CGPoint bushWorldPosition = [_parallaxBackground convertToWorldSpace:bush.position];
+        CGPoint bushScreenPosition = [self convertToNodeSpace:bushWorldPosition];
+        
+        if (bushScreenPosition.x <= (-1 * bush.contentSize.width))
+        {
+            for (CGPointObject *child in _parallaxBackground.parallaxArray)
+            {
+                if (child.child == bush)
+                {
+                    child.offset = ccp(child.offset.x + 2*bush.contentSize.witdh, child.offset.y);
+                }
+            }
+        }
+    }
+    
+    for (CCNode *cloud in _clouds)
+    {
+        CGPoint cloudWorldPosition = [_parallaxBackground convertToWorldSpace:cloud.position];
+        CGPoint cloudScreenPosition = [self convertToNodeSpace:cloudWorldPosition];
+        
+        if (cloudScreenPosition.x <= (-1 * cloud.contentSize.width))
+        {
+            for (CGPointObject *child in _parallaxBackground.parallaxArray)
+            {
+                if (child.child == cloud)
+                {
+                    child.offset = ccp(child.offset.x + 2*cloud.contentSize.witdh, child.offset.y);
+                }
+            }
+        }
+    }
     
     NSMutableArray *offScreenObstacles = nil;
     
